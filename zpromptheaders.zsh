@@ -49,7 +49,7 @@ function git_prompt_header {
 				git_HEAD='(no commit)'
 			fi
 		fi
-		git_branch=$(git symbolic-ref --short HEAD || echo '(no branch)')
+		git_branch=$(git symbolic-ref --short HEAD 2>/dev/null || echo '(no branch)')
 		git_tag=$(git tag --points-at HEAD 2>/dev/null | tr '\n' ',' | sed -e 's/,$//')
 		git_output_part1="git: ${git_tag:-$git_HEAD}"
 		git_output_part2="@$git_branch"
